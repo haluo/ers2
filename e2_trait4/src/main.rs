@@ -6,6 +6,7 @@ trait GetName{
 trait PrintName{
     fn print_name(&self);
 }
+//对任何实现Getname 的类型 实现 PrintName
 impl<T:GetName> PrintName for T{
     fn print_name(&self) {
         println!("name = {}",self.get_name());
