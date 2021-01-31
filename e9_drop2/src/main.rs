@@ -1,3 +1,4 @@
+//drop提前释放
 struct Dog {
     name: String,
 }
