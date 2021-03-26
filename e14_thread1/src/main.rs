@@ -1,7 +1,3 @@
-fn main() {
-    println!("Hello, world!");
-}
-
 
 //(1)进程是资源分配的最小单位，线程是cpu调度的最小单位
 //(2)在使用多线程时会遇到一些问题
@@ -14,3 +10,19 @@ fn main() {
 //    运行时代表二进制文件中包含的由语言本身提供的代码，这些代码根据语言的不同可大可小。不过非汇编语言
 //都会有一定数量的运行时代码。通常，大家说一个语言”没有运行时“，是指这个语言的运行时很小，如 rust。c语言 
 //都是几乎没有运行时的
+use std::thread;
+use std::time::Duration;
+fn main() {
+    let handle = thread::spawn(||{
+        for i in 0..10{
+            println!("num in sub thread is {}",i);
+            thread::sleep(Duration::from_millis(1));
+        }
+    });
+    //handle.join().unwrap();
+    for i in 0..5{
+        println!("num in main thread is {}",i);
+        thread::sleep(Duration::from_millis(1));
+    }
+    handle.join().unwrap();
+}
