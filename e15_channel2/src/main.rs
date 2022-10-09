@@ -8,7 +8,7 @@ fn main() {
        let vars = vec![String::from("hi"),String::from("from"),String::from("thread")];
         for v in vars{
             tx.send(v).unwrap();
-            thread::sleep(Duration::from_millis(1));
+            thread::sleep(Duration::from_millis(1000));
         }
     });
     for re in rx{
