@@ -7,5 +7,6 @@ fn main() {
     let handle = thread::spawn(move||{
        println!("v = {:?}",v) ;
     });
+    //主线程无法使用V
     handle.join().unwrap();
 }
